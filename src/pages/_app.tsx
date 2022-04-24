@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app'
 import { Header } from '../components/Header'
 import '../styles/global.scss'
+import { SessionProvider as NextAuthProvider } from 'next-auth/react'
 
 // This component wraps all pages
 // if there is something to repeat in all pages, it stays here
@@ -11,10 +12,10 @@ import '../styles/global.scss'
 */
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <NextAuthProvider session={pageProps.session}>
       <Header />
       <Component {...pageProps} />
-    </>
+    </NextAuthProvider>
 
   ) 
 }
